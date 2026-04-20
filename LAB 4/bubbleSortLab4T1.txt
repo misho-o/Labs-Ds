@@ -1,0 +1,54 @@
+/******************************************************************************
+Write a C++ program using Bubble Sort to sort an array of 10 integers entered by the user.
+Display the array before and after sorting.
+ Modify Bubble Sort to stop early if the array becomes sorted before completing all passes.
+Show with an example input how it works.
+
+*******************************************************************************/
+
+#include <iostream>
+
+using namespace std;
+
+int* CreateArray(int size){
+    int* arr = new int[size];
+    for(int i =0;i<size;i++){
+        cout<<"Input integer to store:"<<"\n";
+        cin>>arr[i];
+    }
+    
+    return arr;
+}
+
+
+void bubbleSort(int* arr,int n){
+    
+    for(int i =0;i<n-1;i++){
+        bool swapped = false;
+        
+        for(int j = 0 ;j<n-1-i;j++){
+            if(arr[j]>arr[j+1]){
+                int temp = arr[j];
+                arr[j] = arr[j+1];
+                arr[j+1] = temp;
+                swapped = true;
+            }
+        }
+        
+        if(!swapped){
+            break;
+        }
+    }
+    
+    
+    for(int i =0;i<n;i++){
+        cout<<arr[i]<<" ";
+    }
+}
+int main()
+{   
+    int size = 5;
+    int* arr = CreateArray(size);
+    bubbleSort(arr,size);
+    return 0;
+}
